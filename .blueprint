@@ -1,0 +1,11 @@
+created:
+    - database/factories/SpellbookFactory.php
+    - database/factories/SpellFactory.php
+    - database/migrations/2025_07_26_152321_create_spellbooks_table.php
+    - database/migrations/2025_07_26_152322_create_spells_table.php
+    - database/migrations/2025_07_26_152323_create_spell_spellbook_table.php
+    - app/Models/Spellbook.php
+    - app/Models/Spell.php
+models:
+    Spellbook: { name: string, description: 'text nullable', user_id: 'id foreign', is_public: 'boolean default(true)', forked_from_id: 'id nullable foreign:spellbook', relationships: { belongsTo: User, hasMany: Spell } }
+    Spell: { name: string, description: text, school: string, cost: integer, rarity: 'string nullable', level: 'integer nullable', created_by: 'id foreign', relationships: { belongsTo: User, belongsToMany: Spellbook } }
